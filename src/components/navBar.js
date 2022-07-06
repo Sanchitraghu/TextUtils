@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
-function Nav(){
+function Nav(props){
     return (
         <>
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">TextUtils</a>
+        <a className="navbar-brand" href="/">{props.title}</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -30,5 +31,16 @@ function Nav(){
        </>
     );
 }
+
+
+// Agr number bhej diya string ki jagah to error milegi console main.
+Nav.propTypes = {
+  title: PropTypes.string
+};
+
+//Agr props nhi mile to by dafault ye value chli jayegi
+Nav.defaultProps = {
+  title: "Hare krishna"
+};
 
 export default Nav;
