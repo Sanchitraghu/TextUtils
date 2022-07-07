@@ -7,15 +7,19 @@ export default function TextArea(props) {
 
     function handleUpClick(){
         setText(text.toLocaleUpperCase());
+        props.showAlert("Text Changed to UpperCase","Success,")
     }
     function handleLoClick(){
         setText(text.toLocaleLowerCase());
+        props.showAlert("Text Changed to LowerCase","Success,")
     }
     function handleClClick(){
         setText("");
+        props.showAlert("Cleared All the Text","Success,")
     }
     function handleAlClick(){
     setText(text.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase()))));
+    props.showAlert("First letter is Capitalized","Success,")
     }
     
 
