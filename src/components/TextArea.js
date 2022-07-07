@@ -11,6 +11,14 @@ export default function TextArea(props) {
     function handleLoClick(){
         setText(text.toLocaleLowerCase());
     }
+    function handleClClick(){
+        setText("");
+    }
+    function handleAlClick(){
+    setText(text.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase()))));
+    }
+    
+
     function handleOnChange(event){
         setText(event.target.value);
     }
@@ -24,8 +32,10 @@ export default function TextArea(props) {
   <textarea className="form-control" id="exampleFormControlTextarea1" rows="7" value={text} onChange={handleOnChange} placeholder="Enter text here"></textarea>
 </div>
 <div classNameName="mb-3">
- <button type="button" onClick={handleUpClick} className="btn btn-primary mx-1">Convert to UpperCase</button>
-<button type="button" onClick={handleLoClick} className="btn btn-secondary mx-1">Convert to LowerCasey</button>
+ <button type="button" onClick={handleUpClick} className="btn btn-outline-primary mx-1">Convert to UpperCase</button>
+<button type="button" onClick={handleLoClick} className="btn btn-outline-secondary mx-1">Convert to LowerCase</button>
+<button type="button" onClick={handleAlClick} className="btn btn-outline-warning mx-1">First character UpperCase</button>
+<button type="button" onClick={handleClClick} className="btn btn-outline-danger mx-1">Clear</button>
 </div>
 
 <div className="container my-3">
@@ -37,6 +47,8 @@ export default function TextArea(props) {
     {0.008*text.split(" ").length} Minutes require to read.
   </p>
 </div>
+
+
    </>
   );
 }
