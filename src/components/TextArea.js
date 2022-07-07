@@ -27,7 +27,7 @@ export default function TextArea(props) {
   
   <h1  style={{color:props.modes==="light"? "white" : "black"}}>{props.heading}</h1>
 <div className="mb-3">
-  <textarea className="form-control" style={{backgroundColor:props.modes==="light"? "#3F3351" : "white",color:props.modes==="light"? "white" : "black"}} id="exampleFormControlTextarea1" rows="7" value={text} onChange={handleOnChange} placeholder="Enter text here"></textarea>
+  <textarea className="form-control" style={{backgroundColor:props.modes==="light"? "#212529" : "white",color:props.modes==="light"? "white" : "black"}} id="exampleFormControlTextarea1" rows="7" value={text} onChange={handleOnChange} placeholder="Enter text here"></textarea>
 </div>
 <div classNameName="mb-3">
  <button type="button" onClick={handleUpClick} className="btn btn-primary mx-1">Convert to UpperCase</button>
