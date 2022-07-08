@@ -7,9 +7,15 @@ import TextArea from "./components/TextArea";
 
 
 function App() {
+  
   const [mode,setMode]=useState("light");
 
       const [alert,setAlert] = useState(null);
+
+     
+      const [colorOn,setColorOn]= useState(true);
+
+
 
     const showAlert = (messege,type)=>{
           setAlert({
@@ -23,11 +29,22 @@ function App() {
 
     }
 
+    const backgroundColor=(hexcode)=>{ 
+      if(colorOn){ document.body.style.backgroundColor=hexcode;
+        showAlert("Green Background Enabled","Success");
+      setColorOn(false)
+    }
+    else{
+      document.body.style.backgroundColor=hexcode;
+      showAlert("Green Background disabled","Success");
+      setColorOn(true)
+    }
+     
+    } 
+
  const toggles = ()=>{
 
-  console.log("sanchit");
-  
-      if(mode==="light"){
+   if(mode==="light"){
         setMode("dark");
         document.body.style.backgroundColor="#F2D7D9";
         showAlert("Light mode Enabled","Success");
@@ -40,12 +57,12 @@ function App() {
 
   return (
   <>
-   <Navbar title = "TextUtils"  modes={mode} toggleCheck={toggles} />
+   <Navbar title = "TextUtils"  modes={mode} toggleCheck={toggles} bkclr = {backgroundColor} clrOn={colorOn} />
    <Alert alrt={alert} />
    <div className="container my-3">
-   <TextArea showAlert={showAlert} heading="This is a props" modes={mode} />
+   <TextArea showAlert={showAlert} heading="This is a props" modes={mode} clr={colorOn} />
 
-
+    
    {/* <About /> */}
    
    </div>

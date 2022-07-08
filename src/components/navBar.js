@@ -3,7 +3,17 @@ import PropTypes from 'prop-types';
 
 function Nav(props){
 
- 
+ function handleBk1Change(){
+  if(props.clrOn===true){ props.bkclr("#D9F8C4");}
+  else{
+        if(props.modes==="dark"){
+          props.bkclr("#F2D7D9"); 
+        }else{
+          props.bkclr("#774360"); 
+        }
+  }
+
+ }
 
     return (
         <>
@@ -29,9 +39,13 @@ function Nav(props){
             <button className="btn btn-outline-success" type="submit">Search</button>
           </form> */}
        
-          <div className={`form-check form-switch text-${props.modes==="dark"? "dark" : "light"}`}>
+          <div className={`form-check mx-2 form-switch text-${props.modes==="dark"? "dark" : "light"}`}>
   <input className="form-check-input" onChange = {props.toggleCheck} type="checkbox" role="switch" id="flexSwitchCheckChecked" />
   <label className="form-check-label"  htmlFor="flexSwitchCheckChecked">{`Enable ${props.modes} Mode`}</label>
+</div>
+          <div className={`form-check form-switch text-${props.modes==="dark"? "dark" : "light"}`}>
+  <input className="form-check-input" onChange = {handleBk1Change} type="checkbox" role="switch" id="flexSwitchCheckChecked" />
+  <label className="form-check-label"  htmlFor="flexSwitchCheckChecked">{`Enable Green Mode`}</label>
 </div>
         </div>
       </div>
