@@ -1,35 +1,26 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
+
 
 function Nav(props){
 
- function handleBk1Change(){
-  if(props.clrOn===true){ props.bkclr("#D9F8C4");}
-  else{
-        if(props.modes==="dark"){
-          props.bkclr("#F2D7D9"); 
-        }else{
-          props.bkclr("#774360"); 
-        }
-  }
-
- }
 
     return (
         <>
         <nav className={`navbar navbar-${props.modes==="light"? "dark" : "light"} bg-${props.modes==="light"? "dark" : "light"} navbar-expand-lg`}>
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">{props.title}</a>
+        <Link className="navbar-brand" to="/">{props.title}</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">Home</a>
+              <Link className="nav-a active" aria-current="page" to="/">Home</Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/">About</a>
+            <li className="nav-item mx-3">
+              <Link className="nav-a" to="/about">About</Link>
             </li>
         
           
@@ -43,10 +34,7 @@ function Nav(props){
   <input className="form-check-input" onChange = {props.toggleCheck} type="checkbox" role="switch" id="flexSwitchCheckChecked" />
   <label className="form-check-label"  htmlFor="flexSwitchCheckChecked">{`Enable ${props.modes} Mode`}</label>
 </div>
-          <div className={`form-check form-switch text-${props.modes==="dark"? "dark" : "light"}`}>
-  <input className="form-check-input" onChange = {handleBk1Change} type="checkbox" role="switch" id="flexSwitchCheckChecked" />
-  <label className="form-check-label"  htmlFor="flexSwitchCheckChecked">{`Enable Green Mode`}</label>
-</div>
+    
         </div>
       </div>
     </nav>

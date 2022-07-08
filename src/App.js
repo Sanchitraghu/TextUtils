@@ -3,7 +3,12 @@ import './App.css';
 import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import TextArea from "./components/TextArea";
-// import About from "./components/About";
+import About from "./components/About";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 
 function App() {
@@ -11,11 +16,6 @@ function App() {
   const [mode,setMode]=useState("light");
 
       const [alert,setAlert] = useState(null);
-
-     
-      const [colorOn,setColorOn]= useState(true);
-
-
 
     const showAlert = (messege,type)=>{
           setAlert({
@@ -29,18 +29,7 @@ function App() {
 
     }
 
-    const backgroundColor=(hexcode)=>{ 
-      if(colorOn){ document.body.style.backgroundColor=hexcode;
-        showAlert("Green Background Enabled","Success");
-      setColorOn(false)
-    }
-    else{
-      document.body.style.backgroundColor=hexcode;
-      showAlert("Green Background disabled","Success");
-      setColorOn(true)
-    }
-     
-    } 
+   
 
  const toggles = ()=>{
 
@@ -57,16 +46,25 @@ function App() {
 
   return (
   <>
-   <Navbar title = "TextUtils"  modes={mode} toggleCheck={toggles} bkclr = {backgroundColor} clrOn={colorOn} />
-   <Alert alrt={alert} />
-   <div className="container my-3">
-   <TextArea showAlert={showAlert} heading="This is a props" modes={mode} clr={colorOn} />
+   <Router>
 
-    
-   {/* <About /> */}
    
-   </div>
+   <Navbar title = "TextUtils"  modes={mode} toggleCheck={toggles}/>
+   <Alert alrt={alert} />
+
+
   
+   <div className="container my-3">
+        
+          
+          <Routes>
+                  <Route exact path="/" element={<TextArea showAlert={showAlert} heading="This is a props" modes={mode}/>}/>
+                  <Route exact path="/about" element={<About/>}/>
+        </Routes>
+    
+      </div>
+    </Router>
+ 
    </>
   );
 }
