@@ -13,7 +13,7 @@ import {
 
 function App() {
   
-  const [mode,setMode]=useState("light");
+  const [mode,setMode]=useState("dark");
 
       const [alert,setAlert] = useState(null);
 
@@ -58,8 +58,8 @@ function App() {
         
           
           <Routes>
-                  <Route exact path="/" element={<TextArea showAlert={showAlert} heading="This is a props" modes={mode}/>}/>
-                  <Route exact path="/about" element={<About/>}/>
+                  <Route exact path="/" element={<TextArea showAlert={showAlert} heading="Word Counter" modes={mode}/>}/>
+                  <Route exact path="/about" element={<About modes={mode}/>}/>
         </Routes>
     
       </div>

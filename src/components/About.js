@@ -1,36 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function About() {
+export default function About(props) {
 
-    const [mode,setMode]= useState({
-        color:"white",
-        backgroundColor :"black",
-        border:"1px"
-    })
+ 
 
-    const [text,setText] =useState("Enable Dark Mode");
-
-    function handleSwitch(){
-        if(mode.color==="white"){
-          setText("Enable Dark Mode");
-          setMode({
-            color:"black",
-        backgroundColor :"white",
-        border:"1px"
-          })}
-
-          else{
-            setText("Enable Light Mode");
-            setMode({
-              color:"white",
-          backgroundColor :"black",
-          border:"1px"
-            })
-          }
-    }
+  let mode = {
+    color:props.modes==="light"? "white" :"black",
+    backgroundColor :props.modes==="light" ? "#4C3A51" : "white",
+    border:"0.2px solid",
+    borderRadius : "2px"
+  }
+  
 
   return (
     <>
+    <h1 className="mb-4" style={ {color:props.modes==="light"? "white" :"black"}}>About Us</h1>
         <div className="accordion" id="accordionExample" style={mode}>
   <div className="accordion-item" style={mode}>
     <h2 className="accordion-header" id="headingOne" >
@@ -70,10 +54,7 @@ export default function About() {
   </div>
 </div>
 
-<div className="form-check form-switch my-3">
-  <input className="form-check-input" type="checkbox" role="switch" onChange={handleSwitch} id="flexSwitchCheckDefault" />
-  <label className="form-check-label" for="flexSwitchCheckDefault">{text}</label>
-</div>
+
     </>
   )
 }
